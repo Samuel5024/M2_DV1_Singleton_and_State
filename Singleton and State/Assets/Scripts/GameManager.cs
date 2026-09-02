@@ -33,7 +33,7 @@ namespace Chapter.Singleton
 
         void OnGUI()
         {
-            if(GUI.Button(new Rect(150, 0, 100, 30), "Next Scene"))
+            if(GUI.Button(new Rect(0, 100, 80, 25), "Next Scene"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
