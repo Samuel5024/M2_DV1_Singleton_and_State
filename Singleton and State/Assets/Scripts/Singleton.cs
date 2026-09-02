@@ -4,7 +4,7 @@ namespace Chapter.Singleton
 {
     public class Singleton<T> : 
         MonoBehaviour where T: Component
-        {
+    {
 
             private static T _instance;
             private static T Instance
@@ -13,7 +13,9 @@ namespace Chapter.Singleton
                 {
                     if(_instance == null)
                     {
-                        _instance = FindObjectOfType<T>();
+                        // _instance = FindObjectOfType<T>();  FindObjectOfType has been deprecated
+                        _instance = Object.FindFirstObjectByType<T>();
+
 
                         if(_instance == null)
                         {
@@ -27,5 +29,18 @@ namespace Chapter.Singleton
                 }
 
             }
-        }
+
+          public virtual void Awake()
+          {
+                if(_instance == null)
+                {
+                    _instance = this as T;
+                    DontDestroyOnLoad(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+          }          
+    }
 }
