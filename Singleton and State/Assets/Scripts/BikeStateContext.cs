@@ -10,7 +10,7 @@ namespace Chapter.State
 
         private readonly BikeController _bikeController;
 
-        public BikeStateContext(BikeController _bikeController)
+        public BikeStateContext(BikeController bikeController)
         {
             _bikeController = bikeController;
         }
